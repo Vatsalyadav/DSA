@@ -23,19 +23,17 @@ class Solution(object):
         :rtype: int
         """
         # Time = O(n)
-        b = prices[0]
-        s = prices[0]
+        buyPrice = prices[0]
+        sellPrice = prices[0]
         maxProfit = 0
-        i = 0
-        while i < len(prices):
-            if prices[i] < b:
-                b = prices[i]
-                s = prices[i]
-            elif prices[i] > s:
-                s = prices[i]
-            if s - b > maxProfit:
-                maxProfit = s - b
-            i += 1
+        for i in range(len(prices)):
+            if prices[i] < buyPrice:
+                buyPrice = prices[i]
+                sellPrice = prices[i]
+            elif prices[i] > sellPrice:
+                sellPrice = prices[i]
+            if sellPrice - buyPrice > maxProfit:
+                maxProfit = sellPrice - buyPrice
         return maxProfit
 
 
