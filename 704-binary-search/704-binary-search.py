@@ -12,7 +12,7 @@ class Solution(object):
             return 0
         
         while left<=right:
-            mid = (left+right)//2
+            mid = left + (right - left)//2
             if target == nums[mid]:
                 return mid
             elif target > nums[mid]:
