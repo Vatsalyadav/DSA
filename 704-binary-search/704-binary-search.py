@@ -8,6 +8,9 @@ class Solution(object):
         left = 0
         right = len(nums)-1
         
+        if right==1 and nums[0]==target:
+            return 0
+        
         while left<=right:
             mid = left + (right - left)//2
             if target == nums[mid]:
