@@ -13,7 +13,6 @@ class Solution(object):
         """
         if p!= None and q!=None:
             if p.val != q.val:
-                print("here")
                 return False
             return self.isSameTree(p.left, q.left) == True and self.isSameTree(p.right, q.right) == True
         else:
