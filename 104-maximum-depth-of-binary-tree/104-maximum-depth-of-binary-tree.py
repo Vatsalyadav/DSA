@@ -5,11 +5,11 @@
 #         self.left = left
 #         self.right = right
 class Solution(object):
-    def maxDepth(self, root):
+    def maxDepth(self, root, depth = 0):
         """
         :type root: TreeNode
         :rtype: int
         """
-        if root == [] or root == None:
-            return 0
-        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
+        if root is None:
+            return depth
+        return max(self.maxDepth(root.left, depth+1), self.maxDepth(root.right, depth+1))
