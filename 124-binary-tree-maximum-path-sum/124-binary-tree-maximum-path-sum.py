@@ -33,6 +33,6 @@ class Solution(object):
         # print(maxTree)
         if maxTree is None:
             return float("-inf")
-        left = max(maxTree.left.val[0],maxTree.left.val[1]) if maxTree.left is not None else float("-inf")
-        right = max(maxTree.right.val[0],maxTree.right.val[1]) if maxTree.right is not None else float("-inf")
+        left = maxTree.left.val if maxTree.left is not None else float("-inf")
+        right = maxTree.right.val if maxTree.right is not None else float("-inf")
         return max(maxTree.val, left, right, self.findMaxValue(maxTree.left), self.findMaxValue(maxTree.right))
