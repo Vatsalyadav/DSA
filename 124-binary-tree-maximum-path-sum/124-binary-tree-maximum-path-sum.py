@@ -14,7 +14,7 @@ class Solution(object):
             return 0
         maxTree = self.createMaxTree(root)
         
-        return max(self.findMaxValue(maxTree))
+        return self.inorderTravers(maxTree)
     
     def createMaxTree(self, root, rev = None):
         if root is None:
@@ -29,10 +29,17 @@ class Solution(object):
         rev.val = [max(rev.val[0], rev.val[0] + left.val[1] + right.val[1], rev.val[0] + left.val[1], rev.val[0] + right.val[1]),max(rev.val[0], rev.val[0] + left.val[1], rev.val[0] + right.val[1])]
         return rev
         
-    def findMaxValue(self, maxTree):
-        # print(maxTree)
+    # def findMaxValue(self, maxTree):
+    #     # print(maxTree)
+    #     if maxTree is None:
+    #         return float("-inf")
+    #     left = maxTree.left.val if maxTree.left is not None else float("-inf")
+    #     right = maxTree.right.val if maxTree.right is not None else float("-inf")
+    #     return max(maxTree.val, left, right, self.findMaxValue(maxTree.left), self.findMaxValue(maxTree.right))
+    
+    def inorderTravers(self, maxTree, maxSum = float("-inf")):
         if maxTree is None:
-            return float("-inf")
-        left = maxTree.left.val if maxTree.left is not None else float("-inf")
-        right = maxTree.right.val if maxTree.right is not None else float("-inf")
-        return max(maxTree.val, left, right, self.findMaxValue(maxTree.left), self.findMaxValue(maxTree.right))
+            return None
+        maxSum = max(maxTree.val)
+        return max(maxSum, self.inorderTravers(maxTree.left, maxSum), self.inorderTravers(maxTree.right, maxSum))
+        
