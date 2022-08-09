@@ -11,10 +11,10 @@ class Solution(object):
         :type subRoot: TreeNode
         :rtype: bool
         """
-        if root is None:
-            return subRoot == None
         if subRoot is None:
             return True
+        if root is None:
+            return False
         if subRoot.val == root.val and self.checkSubtree(root, subRoot):
             return True
         else:
