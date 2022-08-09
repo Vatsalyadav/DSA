@@ -10,6 +10,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
+        
         if root is None:
             if isLeafNode:
                 return depth
