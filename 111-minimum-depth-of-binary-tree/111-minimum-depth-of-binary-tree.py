@@ -5,16 +5,18 @@
 #         self.left = left
 #         self.right = right
 class Solution(object):
-    def minDepth(self, root, depth = 0, isLeafNode = True):
+    def minDepth(self, root):
         """
         :type root: TreeNode
         :rtype: int
         """
+        return 0 if root is None else self.findMinDepth(root)
         
-        if root is None:
-            if isLeafNode:
-                return depth
-            else:
-                return float("inf")
+        
+    def findMinDepth(self, root, depth = 0, isLeafNode = False):
+        if isLeafNode:
+            return depth
+        elif root is None:
+            return float("inf")
         isLeafNode = True if root.left is None and root.right is None else False
-        return min(self.minDepth(root.left, depth+1, isLeafNode), self.minDepth(root.right, depth+1,isLeafNode))
+        return min(self.findMinDepth(root.left, depth+1, isLeafNode), self.findMinDepth(root.right, depth+1,isLeafNode))
