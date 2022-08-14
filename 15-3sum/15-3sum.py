@@ -10,27 +10,24 @@ class Solution(object):
             return [[0,0,0]]
         
         else:
-            
             nums.sort()
             ans = []
+            d = {}
             for i in range(l-2):
                 left = i+1
                 right = l-1
                 while left < right:
                     potentialMatch = nums[i] + nums[left] + nums[right]
                     if potentialMatch == 0:
-                        ans.append([nums[i] , nums[left] , nums[right]])
+                        sortedMatch = sorted([nums[i], nums[left], nums[right]])
+                        potentialMatchStr = str(sortedMatch[0])+'_'+str(sortedMatch[1])+'_'+str(sortedMatch[2])
+                        if potentialMatchStr not in d:
+                            ans.append([nums[i] , nums[left] , nums[right]])
+                            d[potentialMatchStr] = True
                         left += 1
                         right -=1
                     elif potentialMatch < 0:
                         left += 1
                     else:
                         right -=1
-            d = {}
-            ans1 = []
-            for a in ans:
-                val = str(a[0])+'_'+str(a[1])+'_'+str(a[2])
-                if val not in d:
-                    d[val] = True
-                    ans1.append(a)
-            return ans1
+            return ans
