@@ -14,8 +14,6 @@ class Solution(object):
         for coin in coins:
             for index in range(coin, amount+1):
                 coinsRequired = 1 + ans[index - coin]
-                
                 if coinsRequired < ans[index]:
                     ans[index] = coinsRequired
-                ans[index] = min(ans[index], 1 + ans[index - coin])
         return ans[-1] if ans[-1]!=float("inf") else -1
