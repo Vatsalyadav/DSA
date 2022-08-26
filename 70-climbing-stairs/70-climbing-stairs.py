@@ -1,15 +1,17 @@
 class Solution(object):
-    def climbStairs(self, n):
+    def climbStairs(self, n, memo = {}):
         """
         :type n: int
         :rtype: int
         """
-        if n==1:
+        
+        if n == 0:
             return 1
-
-        a,b = 1,2
-        for i in range(2,n):
-            c = a+b
-            a = b
-            b = c
-        return b
+        elif n < 0:
+            return 0
+        if n-1 not in memo:
+            memo[n-1] = self.climbStairs(n-1, memo)
+        if n-2 not in memo:
+            memo[n-2] = self.climbStairs(n-2, memo)
+        return memo[n-1] + memo[n-2]
+        
