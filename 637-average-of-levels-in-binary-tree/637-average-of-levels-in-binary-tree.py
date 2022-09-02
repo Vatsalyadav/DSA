@@ -16,13 +16,14 @@ class Solution(object):
         queue = collections.deque()
         queue.append(root)
         while queue:
-            level = []
+            currSum = 0
+            levelLen = len(queue)
             for i in range(len(queue)):
                 node = queue.popleft()
-                level.append(node.val)
+                currSum += node.val
                 if node.left:
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
-            res.append(sum(level)/float(len(level)))
+            res.append(currSum/float(levelLen))
         return res
