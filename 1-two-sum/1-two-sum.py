@@ -8,6 +8,6 @@ class Solution:
             
             if potentialMatch in d:
                 return [d[potentialMatch], index]
-            if num not in d:
+            else:
                 d[num] = index
             
