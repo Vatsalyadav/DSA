@@ -8,10 +8,10 @@ class Solution {
             else
                 chars.put(ch, 1);
         }
-        boolean hasOdd = false;
+        // boolean hasOdd = false;
         for(int count: chars.values()){
             if(count%2 == 1) {
-                hasOdd = true;
+                // hasOdd = true;
                 longest+= count-1;
             }
             else {
@@ -19,6 +19,6 @@ class Solution {
             }
         }
         
-        return longest + (hasOdd ? 1 : 0); 
+        return longest + (longest < s.length() ? 1 : 0); 
     }
 }
