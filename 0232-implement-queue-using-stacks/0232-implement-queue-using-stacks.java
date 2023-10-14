@@ -9,24 +9,24 @@ class MyQueue {
     }
     
     public void push(int x) {
-        dupliQ.add(x);
+        dupliQ.push(x);
     }
     
     public int pop() {
         while(!dupliQ.isEmpty())
-            revStack.add(dupliQ.pop());
+            revStack.push(dupliQ.pop());
         int pop = revStack.pop();
         while(!revStack.isEmpty())
-            dupliQ.add(revStack.pop());
+            dupliQ.push(revStack.pop());
         return pop;
     }
     
     public int peek() {
         while(!dupliQ.isEmpty())
-            revStack.add(dupliQ.pop());
+            revStack.push(dupliQ.pop());
         int peek = revStack.peek();
         while(!revStack.isEmpty())
-            dupliQ.add(revStack.pop());
+            dupliQ.push(revStack.pop());
         return peek;
     }
     
