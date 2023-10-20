@@ -1,20 +1,13 @@
 class Solution {
     public void sortColors(int[] nums) {
-        HashMap<Integer, Integer> colors = new HashMap<>();
-        
-        colors.put(0,0);
-        colors.put(1,0);
-        colors.put(2,0);
-        
-        for(int n:nums){
-            colors.put(n, colors.get(n)+1);
+
+        int[] colors = new int[3];
+        for(int n: nums){
+            colors[n]++;
         }
-        int i = 0;
-        int l = 0;
-        while(i<3){
-            for(int j = 0; j<colors.get(i); j++)
-                nums[l++] = i;
-            i++;
-        }
+        
+        Arrays.fill(nums, 0, colors[0], 0); // Fill the first n elements with m
+        Arrays.fill(nums, colors[0], colors[0] + colors[1], 1);
+        Arrays.fill(nums, colors[0] + colors[1],colors[0] + colors[1]+ colors[2], 2);
     }
 }
